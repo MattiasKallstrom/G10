@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Shop</title>
+	<title> Shop </title>
 </head>
 <body>
-	<h1>Shop page</h1>
+	<h1>Shop Page</h1>
 </body>
 </html>
