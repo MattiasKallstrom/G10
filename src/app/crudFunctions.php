@@ -17,6 +17,22 @@ try {
 return $user;
 }
 
+function fetchProductById($productId) {
+    global $dbconnect;
+
+    try {
+        $query = "SELECT * FROM products WHERE id = :id";
+        $stmt = $dbconnect->prepare($query);
+        $stmt->bindValue(':id', $productId);                                                   
+        $stmt->execute();
+        $product = $stmt->fetch();
+    } catch (\PDOException $e) {
+        throw new \PDOException($e->getMessage(), (int) $e->getCode());
+    }
+
+return $product;
+}
+
 function fetchUserById($id){
 	global $dbconnect;
 	try {
@@ -77,6 +93,29 @@ function addUser($userData){
 	        throw new \PDOException($e->getMessage(), (int) $e->getCode());
 		
 	}
+	return $result;
+}
+
+function updateProduct($productData){
+	global $dbconnect;
+try {
+		$query = "  UPDATE products
+                    SET title = :title, description = :description, price = :price, img_url = :img_url
+                    WHERE id = :id
+		";
+		$stmt = $dbconnect->prepare($query);
+		$stmt->bindvalue(':title',$productData['title']);
+		$stmt->bindvalue(':description',$productData['description']);
+		$stmt->bindvalue(':price',$productData['price']);
+		$stmt->bindvalue(':img_url',$productData['img_url']);
+		$stmt->bindvalue(':id', $productData['id']);
+		$result = $stmt->execute();
+		
+	} catch (\PDOException $e) {
+throw new \PDOException($e->getMessage(), (int) $e->getCode());
+		
+	}
+                
 	return $result;
 }
 

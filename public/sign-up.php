@@ -197,7 +197,7 @@
   	  
   
 </div>
-<p class="d-flex justify-content-center"><span class="mr-2">Already User?</span>  <a href="sign-in.php"> Sign In</a></p>
+<p class="d-flex justify-content-center"><span class="mr-2">Already User?</span>  <a href="../public/sign-in.php"> Sign In</a></p>
 </form>
 
 	

@@ -40,7 +40,7 @@ foreach ($_SESSION['cartItems'] as $cartId => $cartItem) {
 							
 							<div class="row cart-detail">
 								<div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
-									<img src="images/<?= $cartItem['img_url'] ?>" alt="">
+									<img src="../images/<?= $cartItem['img_url'] ?>" alt="">
 								</div>
 								<div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
 									<p><?= $cartItem['title'] ?></p>
@@ -71,7 +71,7 @@ foreach ($_SESSION['cartItems'] as $cartId => $cartItem) {
 				</div> -->
 				<div class="row">
 					<div class="col-lg-12 col-sm-12 col-12 text-center checkout">
-						<a class="btn btn-primary btn-block" href="check-out.php">Checkout</a>
+						<a class="btn btn-primary btn-block" href="../public/check-out.php">Checkout</a>
 					</div>
 				</div>
 			</div>

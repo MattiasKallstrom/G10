@@ -10,7 +10,7 @@ if (isset($_POST['deletePostBtn'])) {
 $result= deleteUser($_SESSION['id']);   
 if ($result) {
   session_destroy();
-  redirectLocation('signin.php');
+  redirectLocation('../public/sign-in.php');
 }
 
 }
@@ -185,3 +185,5 @@ if (isset($_POST['updateUser'])) {
 </div>
 </form>
 </div>
+
+<?php require_once('../layout/footer.php') ?>
