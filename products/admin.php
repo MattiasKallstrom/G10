@@ -29,7 +29,7 @@ $stmt->bindParam(':img_url', $img_url);
  
 ?>
 
-      <h2>All posts</h2> 
+      <h2>All products</h2> 
       
 
       <table>
