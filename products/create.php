@@ -11,6 +11,7 @@ $description = '';
 $price = '';
 $img_url = '';
 
+
 $stmt = $dbconnect->prepare("INSERT INTO products (title, description, price, img_url)
 VALUES (:title, :description, :price, :img_url)");
 
@@ -18,10 +19,10 @@ $stmt->bindParam(':title', $title);
 $stmt->bindParam(':description', $description);
 $stmt->bindParam(':price', $price);
 $stmt->bindParam(':img_url', $img_url);
-$result = $stmt->execute();
 
 $errors = array('title'=>'', 'description'=>'', 'price'=>'', 'img_url'=>'');
 
+if (isset($_POST['submit'])){
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
@@ -46,8 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 }
-
 }
-$stmt->execute()
+$stmt->execute();
+}
+
 
 ?>
