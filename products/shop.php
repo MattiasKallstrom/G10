@@ -26,9 +26,10 @@ if (isset($_GET['item'])) {
 }
 
 ?>
-
+<div class="card-deck ">
+<div class="col mb-3 justify-content-center d-flex justify-content-center">
 <div class="product content-wrapper">
-
+<div class="card h-100">
 <img src="<?php echo $products['img_url']?>" class="card-img-top align-self-center" alt="...">
     <div>
         <h1 class="title"><?=$products['title']?></h1>
@@ -41,7 +42,9 @@ if (isset($_GET['item'])) {
 			<input type="number" name="quantity" value="1" min="0">
 			<input type="submit" class="btn btn-outline-success" name="addToCart" value="Add to cart">
 			</form>
-
+</div>
+</div>
+</div>
     </div>
 </div>
 
