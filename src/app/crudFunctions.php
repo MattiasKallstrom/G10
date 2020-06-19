@@ -119,6 +119,7 @@ throw new \PDOException($e->getMessage(), (int) $e->getCode());
 	return $result;
 }
 
+
 function updateUser($userData){
 	global $dbconnect;
 try {
@@ -163,7 +164,115 @@ WHERE id = :id;
 return $result;
 }
 
+function fetchAllUsers() {
+		
+		global $dbconnect;
 
+		try {
+		    $query = "
+		        SELECT * FROM users
+		    ";
+
+		    $stmt = $dbconnect->query($query);
+		   
+		    $users = $stmt->fetchAll();
+		} catch (\PDOException $e) {
+		    throw new \PDOException($e->getMessage(), (int) $e->getCode());
+		}
+
+		return $users;
+	}
+function fetchAllUsersByOrder() {
+		
+		global $dbconnect;
+
+		try {
+		    $query = "
+		       SELECT * FROM users ORDER BY id DESC LIMIT 3";
+		  
+
+		    $stmt = $dbconnect->query($query);
+		   
+		    $users = $stmt->fetchAll();
+		} catch (\PDOException $e) {
+		    throw new \PDOException($e->getMessage(), (int) $e->getCode());
+		}
+
+		return $users;
+	}
+function fetchAllProducts() {
+		
+		global $dbconnect;
+try {
+					$query = "
+					
+					SELECT * FROM products";
+					$stmt = $dbconnect->query($query);
+					
+					$products = $stmt->fetchAll();
+					} catch (\PDOException $e) {
+					throw new \PDOException($e->getMessage(), (int) $e->getCode());
+					}
+
+		return $products;
+	}
+	function fetchAllProductsByOrder() {
+		
+		global $dbconnect;
+try {
+					$query = "
+					
+					SELECT * FROM products ORDER BY id DESC LIMIT 3";
+					$stmt = $dbconnect->query($query);
+					
+					$products = $stmt->fetchAll();
+					} catch (\PDOException $e) {
+					throw new \PDOException($e->getMessage(), (int) $e->getCode());
+					}
+
+		return $products;
+	}
+
+	function deleteProduct($Id){
+global $dbconnect;
+
+try {
+	$query = "DELETE FROM products
+WHERE id = :id;
+	";
+	$stmt = $dbconnect->prepare($query);
+	$stmt->bindValue(':id',$Id);
+	$result = $stmt->execute();
+	
+} catch (\PDOException $e) {
+	throw new \PDOException($e->getMessage(),(int) $e->getCode());
+	
+}
+return $result;
+}
+function deleteUserById($Id){
+global $dbconnect;
+
+try {
+	$query = "DELETE FROM users
+WHERE id = :id;
+	";
+	$stmt = $dbconnect->prepare($query);
+	$stmt->bindValue(':id',$Id);
+	$result = $stmt->execute();
+	
+} catch (\PDOException $e) {
+	throw new \PDOException($e->getMessage(),(int) $e->getCode());
+	
+}
+return $result;
+}
+function rowCount($dbconnect,$query){
+	$stmt = $dbconnect->prepare($query);
+	$stmt->execute();
+	return $stmt->rowCount();
+}
+ 
 
 
  ?>
