@@ -9,7 +9,7 @@ html, body {
 }
 
 .admin-page, .index-page, .shop-page {
-   background: linear-gradient(16deg, rgb(65, 48, 63) 13%, rgb(63, 51, 66) 47%, rgb(253, 253, 253) 61%, rgb(114, 109, 108) 80%);
+   background: linear-gradient(16deg, rgb(65, 48, 63) 13%, rgb(176, 136, 185) 47%, rgb(253, 253, 253) 61%, rgb(114, 109, 108) 80%);
 }
 
 .card {
