@@ -33,14 +33,11 @@ try {
 		<meta charset="UTF-8">
 		<title><?php  ?></title>
 	</head>
-	<body>
-		
+
 		<!-- Header Start -->
 	
-
-
-
 <!-- Section content starts here -->
+<body class="index-page">
 <div class="container col-xl-12">
 	
 

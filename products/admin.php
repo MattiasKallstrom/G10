@@ -16,8 +16,6 @@ if(!isset($_SESSION['user'])){
 }
 
 
-
-
 $stmt = $dbconnect->prepare("SELECT * FROM products ORDER BY id DESC");
 $stmt->execute();
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -41,27 +39,30 @@ $stmt->bindParam(':img_url', $img_url);
 		<meta charset="UTF-8">
 		<title><?php  ?></title>
 	</head>
-  <body>
-  <div id="container-xl">
+  <body class="admin-page">
+ 
   <h2 class="row justify-content-center mt-5">
       All products
 </h2>
-
-      <table class ="row justify-content-center mt-5">
-       <tr class="form-group">
-          <th class="col">ID</th>
-          <th class="col">Title</th>
+<div class="container">
+<div class="row justify-content-center mt-5">
+<table class="table table-striped table-hover">
+       <tr class="form-group-xl-12">
+          <th >ID</th>
+          <th>Title</th>
           <th class="col">Description</th>
-          <th class="col">Price</th>
-          <th class="col">Image</th>
+          <th>Price</th>
+          <th >Image</th>
+          <th >Manage</th>
         </tr>
+      
         <?php foreach($products as $product): ?>
         
-            <td class="col"><?php echo htmlspecialchars($product['id']); ?></td>
-            <td class="col"><?php echo htmlspecialchars($product['title']); ?></td>
-            <td class="col-10"><?php echo htmlspecialchars($product['description']); ?></td>
-            <td class="col"><?php echo htmlspecialchars($product['price']); ?></td>
-            <td class="col"><?php echo htmlspecialchars($product['img_url']); ?></td>
+            <td ><?php echo htmlspecialchars($product['id']); ?></td>
+            <td ><?php echo htmlspecialchars($product['title']); ?></td>
+            <td ><?php echo htmlspecialchars($product['description']); ?></td>
+            <td ><?php echo htmlspecialchars($product['price']); ?></td>
+            <td ><?php echo htmlspecialchars($product['img_url']); ?></td>
             <td>
             <form action="admin.php?=update.php" method="GET" >
                 <input type="hidden" name="id" value="<?=$product['id']?>">
@@ -69,56 +70,50 @@ $stmt->bindParam(':img_url', $img_url);
               </form>
               <form action="admin.php?delete=<?php echo $product['id']?>" method="POST">
                 <input type="hidden" name="id" value="<?=$product['id']?>">
-                 <input type="submit"name="delete" class=" btn btn-danger" value="Delete"></a>     
+                 <input type="submit"name="delete" class=" btn btn-danger" value="Delete "></a>     
             </td>
           </tr>
         <?php endforeach; ?>
       </table>
 
-
-      
-
-
-
-      <div id="container">
-        <article class="border">
-        <form action="admin.php" method="POST">   
-        <div class="form-group-xl-12"> 
-            <p>
+      <div class="container col-xl-12">
+        
+        <form action="admin.php" method="POST">               
                <h2 class="form-title d-flex justify-content-center mt-5" >Create a new product</h2><br>
                 <div class="form-row justify-content-center">
                 </div>
-
-                <div class="form-group">
+                <br>
+  
                 <label for="title">Title</label>
+                <br>
                 <input type="text" name="title" class="form-control" value="<?php echo $title; ?>"placeholder="Hello World">
-                </div><br>
-                <div class="form-group">
+                <br>
+                
                 <label for="content">Description</label>
+                <br>
                 <textarea type="text" name="description" class="form-control" value="<?php echo $description; ?>" rows="5" cols="40" placeholder="Content"></textarea>
-                </div><br>
-                <div class="form-group">
+                <br>
+                
                 <label for="author">Price</label>
+                <br>
                 <input type="number" name="price" class="form-control" value="<?php echo $price; ?>" placeholder="Price">
-                </div><br>
+                <br>
                 
                 <label for ="image"> Select an image to upload</label>
+                <br>
                 <input type="file" name="img_url" class="form-control-file" id="fileToUpload">
                 <br>
-         
+               
                 <input type ="submit" name="submit" class="btn btn-success" value="Submit">
-            
-            </p>
-        </form>
-       
-        
-</body>
-        <?php
-require_once("../layout/footer.php")
+          </div>
+        </div>
+       </form>
+      </div>
+    </div>
+   </div>
+   </div>
+</div>
+  </body>
+<?php
+require_once("../layout/footer.php");
 ?>           
-
-            <hr>
-        </article>
-    </div>
-    </div>
-</body>

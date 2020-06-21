@@ -26,7 +26,9 @@ if (isset($_GET['item'])) {
 }
 
 ?>
-<div class="card-deck ">
+
+<body class="shop-page">
+<div class="card-deck">
 <div class="col mb-3 justify-content-center d-flex justify-content-center">
 <div class="product content-wrapper">
 <div class="card h-100">
@@ -47,7 +49,7 @@ if (isset($_GET['item'])) {
 </div>
     </div>
 </div>
-
+</body>
 <?php
 require_once("../layout/footer.php")
 ?>
