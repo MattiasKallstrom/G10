@@ -267,6 +267,45 @@ WHERE id = :id;
 }
 return $result;
 }
+
+
+function fetchAllOrders() {
+		
+		global $dbconnect;
+
+		try {
+		    $query = "
+		        SELECT * FROM orders
+		    ";
+
+		    $stmt = $dbconnect->query($query);
+		   
+		    $users = $stmt->fetchAll();
+		} catch (\PDOException $e) {
+		    throw new \PDOException($e->getMessage(), (int) $e->getCode());
+		}
+
+		return $users;
+	}
+
+	function fetchAllOrdersByOrder() {
+		
+		global $dbconnect;
+
+		try {
+		    $query = "
+		       SELECT * FROM orders ORDER BY id DESC LIMIT 3";
+		  
+
+		    $stmt = $dbconnect->query($query);
+		   
+		    $users = $stmt->fetchAll();
+		} catch (\PDOException $e) {
+		    throw new \PDOException($e->getMessage(), (int) $e->getCode());
+		}
+
+		return $users;
+	}
 function rowCount($dbconnect,$query){
 	$stmt = $dbconnect->prepare($query);
 	$stmt->execute();

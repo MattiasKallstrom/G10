@@ -2,12 +2,14 @@
  
 require('../src/config.php');
 require(SRC_PATH . 'dbconnect.php');
-include('include/header-admin.php')
+require_once('include/header-admin.php');
+
+
 ?>
 
 <div class="content">
 	<div class="container-fluid">
-		<div class="row">
+		<div class="row"style="margin:5px">
 			<div class="col-sm-6 col-md-6 col-lg-3 mt-3">
 				<div class="card">
 					<div class="content" style="background-color: #8e44ad">
@@ -21,14 +23,16 @@ include('include/header-admin.php')
 							<div class="col-sm-8">
 								<div class="detail text-center text white">
 									<p style="color:#FFFFFF">NEW ORDERS</p>
-									<span class="number"style="color:#FFFFFF;font-size:26px">6,267</span>
+									<span class="number"style="color:#FFFFFF;font-size:26px"><?php echo rowCount($dbconnect,"  SELECT * FROM orders
+									
+								");?></span>
 								</div>
 							</div>
 						</div>
 						<div class="footer">
 							<hr />
 							<div class="stats text-white">
-								<i class="material-icons "style="float:right;margin-right: 100px;">&#xe863;</i>  Updated every 30 min
+								<i class="material-icons "style="float:right;margin-right: 100px;">&#xe863;</i>  Updated with every order
 							</div>
 						</div>
 					</div>
@@ -119,8 +123,8 @@ include('include/header-admin.php')
 	<div class="container latest">
 		<div class="row">
 			<div class="col-sm-6">
-				<div class="panel panel-default">
-					<div class="panel-heading"style="margin-bottom: 20px"> <i class="fa fa-users"style="color:#0CF000"></i> <h6>LATEST REGISTERD USERS</h6></div>
+				<div class="panel panel-default text-white">
+					<div class="panel-heading"style="margin-bottom: 20px; margin-top:50px"> <i class="fa fa-users"style="color:#0CF000"></i> <h6>LATEST REGISTERD USERS</h6></div>
 					<?php
 					if (isset($_POST['activate']))  { 
   $result= activateUser($_SESSION['id']);
@@ -132,14 +136,14 @@ $users = fetchAllUsersByOrder();
 					<div class="panel-body" style="border-radius: 20px">
 						<?php foreach ($users as $key => $user) { ?>
 						<div class="card" style="background-color:#50BBC7 ;border-radius: 0px" >
-							<ul class=" list-group-flush">
+							<ul class=" list-group-flush" style="list-style-type: none">
 								<li class="group-item"style="color:#FFFFFF">
 									
-									<?=$user['id']?>&nbsp;&nbsp;
-									<?=htmlentities($user['first_name'])?> &nbsp;&nbsp;
-									<?=htmlentities($user['last_name'])?> &nbsp;&nbsp;
-								<?=htmlentities($user['register_date'])?></li>
-								<br>
+									<?=$user['id']?>&emsp;&ensp;
+									<?=htmlentities($user['first_name'])?> &emsp;&ensp;
+									<?=htmlentities($user['last_name'])?> &emsp;&ensp;
+								<?=htmlentities($user['create_at'])?></li>
+							
 								
 							</ul>
 						</div>
@@ -148,8 +152,8 @@ $users = fetchAllUsersByOrder();
 				</div>
 			</div>
 			<div class="col-sm-6">
-				<div class="panel panel-default">
-					<div class="panel-heading"style="margin-bottom: 20px" > <i class="fa fa-tag"style="color:#0CF000"></i> <h6>LATEST PRODUCTS ADDED</h6></div>
+				<div class="panel panel-default text-white">
+					<div class="panel-heading"style="margin-bottom: 20px ;margin-top:50px"  > <i class="fa fa-tag"style="color:#0CF000"></i> <h6>LATEST PRODUCTS ADDED</h6></div>
 					<?php
 					if (isset($_POST['activate']))  { 
   $result= activateProduct($_SESSION['id']);
@@ -160,13 +164,42 @@ $products = fetchAllProductsByOrder();
 						<?php foreach ($products as $key => $product) { ?>
 						
 						<div class="card" style="background-color:#50BBC7 ;border-radius: 0px" >
-							<ul class="group-flush">
+							<ul class="group-flush" style="list-style-type: none">
 								<li class="group-item"style="color:#FFFFFF">
-									<?=$product['id']?>&nbsp;&nbsp;&nbsp;&nbsp;
-									<?=htmlentities($product['title'])?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<?=htmlentities($product['register_date'])?></li><br>
+									<?=$product['id']?>&emsp;
+									<?=htmlentities($product['title'])?> &emsp;&ensp;
+									<?=htmlentities($product['price'])?> $&emsp;&ensp;
+								<?=htmlentities($product['create_at'])?></li>
 								
 							</ul>
+						</div>
+						
+					<?php } ?></div>
+				</div>
+			</div>
+			<div class="col-sm-12 "style="text-align:center">
+				<div class="panel panel-default text-white">
+					<div class="panel-heading"style="margin-bottom: 20px ;margin-top:50px"  > <i class="fa fa-money"style="font-size:38px;color:#0CF000"></i><br></h6>LATEST ORDER CONFIRMED</h6></div>
+					<?php
+					if (isset($_POST['activate']))  { 
+  $result= activateOrder($_SESSION['id']);
+}
+$orders = fetchAllOrdersByOrder();
+					?>
+					<div class="panel-body" style="border-radius: 20px">
+						<?php foreach ($orders as $key => $order) { ?>
+						
+						<div class="card" style="background-color:#50BBC7 ;border-radius: 0px" >
+							<ol class="c"style= "list-style-type: upper-roman">
+								<li class="group-item"style="color:#FFFFFF">
+			<?=htmlentities($order['billing_full_name'])?>&emsp;&emsp;&emsp;
+            <?=htmlentities($order['total_price'])?>$&emsp;&emsp;&emsp;
+            <?=htmlentities($order['billing_street'])?>&emsp;&emsp;&emsp;
+            <?=htmlentities($order['billing_city'])?>&emsp;&emsp;&emsp;
+            <?=htmlentities($order['billing_postal_code'])?>&emsp;&emsp;&emsp;
+            <?=htmlentities($order['billing_country'])?>&emsp;&emsp;&emsp;
+								
+							</ol>
 						</div>
 						
 					<?php } ?></div>

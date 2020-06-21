@@ -102,6 +102,7 @@ $user = fetchUserById($_GET['id']);
         <div class="modal-header">
             <a class="navbar-brand" href="manage member.php"  >To &nbsp;Manage&nbsp;<b>Member</b></a>
             <legend> UPDATE MEMBER
+                
                 <?=$msg?>
             </legend>
             <div class="form-row justify-content-center">

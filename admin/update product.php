@@ -75,6 +75,7 @@ throw new \PDOException($e->getMessage(), (int) $e->getCode());
             <div class="modal-header">
                 <a class="navbar-brand" href="manage product.php"  >To &nbsp; Manage<b>&nbsp;Product</b></a>
                 <legend> UPDATE PRODUCT
+                    
                     <?=$msg?>
                 </legend>
                 <div class="form-group">
