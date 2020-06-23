@@ -4,7 +4,7 @@ require('../src/config.php');
 require('../src/dbconnect.php');
 require('delete-product.php');
 require('create.php');
-require('update.php');
+
 //require('upload.php');
 error_reporting(-1);
 
@@ -64,9 +64,9 @@ $stmt->bindParam(':img_url', $img_url);
             <td ><?php echo htmlspecialchars($product['price']); ?></td>
             <td ><?php echo htmlspecialchars($product['img_url']); ?></td>
             <td>
-            <form action="admin.php?=update.php" method="GET" >
-                <input type="hidden" name="id" value="<?=$product['id']?>">
-                <input type="submit" name="edit" class="btn btn-info" value="Update">
+            <form action="update.php" <?php echo $product['id']?>method="GET" >
+              <input type="hidden" name="id" value="<?=$product['id']?>">
+                <input type="submit" class="btn btn-info" value="Update">
               </form>
               <form action="admin.php?delete=<?php echo $product['id']?>" method="POST">
                 <input type="hidden" name="id" value="<?=$product['id']?>">
@@ -86,17 +86,20 @@ $stmt->bindParam(':img_url', $img_url);
   
                 <label for="title">Title</label>
                 <br>
-                <input type="text" name="title" class="form-control" value="<?php echo $title; ?>"placeholder="Hello World">
+                <input type="text" name="title" class="form-control" 
+                value="<?php echo $title; ?>"placeholder="Hello World">
                 <br>
                 
                 <label for="content">Description</label>
                 <br>
-                <textarea type="text" name="description" class="form-control" value="<?php echo $description; ?>" rows="5" cols="40" placeholder="Content"></textarea>
+                <textarea type="text" name="description" class="form-control" 
+                value="<?php echo $description; ?>" rows="5" cols="40" placeholder="Content"></textarea>
                 <br>
                 
                 <label for="author">Price</label>
                 <br>
-                <input type="number" name="price" class="form-control" value="<?php echo $price; ?>" placeholder="Price">
+                <input type="number" name="price" class="form-control" 
+                value="<?php echo $price; ?>" placeholder="Price">
                 <br>
                 
                 <label for ="image"> Select an image to upload</label>

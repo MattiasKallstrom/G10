@@ -45,8 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $price = $_POST["price"];
     }
 
+  }
 
-}
 }
 $stmt->execute();
 }

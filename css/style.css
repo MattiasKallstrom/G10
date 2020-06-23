@@ -8,7 +8,7 @@ html, body {
 	margin: 0!important;
 }
 
-.admin-page, .index-page, .shop-page {
+.admin-page, .index-page, .shop-page, .update-page {
    background: linear-gradient(16deg, rgb(65, 48, 63) 13%, rgb(176, 136, 185) 47%, rgb(253, 253, 253) 61%, rgb(114, 109, 108) 80%);
 }
 
