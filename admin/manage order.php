@@ -11,7 +11,7 @@ if (isset($_POST['delete'])) {
  // $result = deleteUser($_SESSION['id']);}
   try {
       $query = "
-          DELETE FROM users
+          DELETE FROM orders
           WHERE id = :id;
       ";
 
@@ -25,7 +25,7 @@ if (isset($_POST['delete'])) {
 
 
 
-$users = fetchAllUsers();
+$orders = fetchAllOrders();
 
 
 ?>
@@ -35,12 +35,12 @@ $users = fetchAllUsers();
       <div class="table-title">
         <div class="row">
           <div class="col-sm-6">
-            <a class="navbar-brand" href="adminpanel.php" style="color: #ffffff;">TO &nbsp;ADMIN<b>PANEL</b></a>
+            <a class="navbar-brand" href="adminpanel.php" style="color: #ffffff">TO &nbsp;ADMIN<b>PANEL</b></a>
           </div>
-          <div class="col-sm-6">
-             <form action="create member.php" method="GET">
-        <input type="submit" value="CREATE USER"class="btn btn-success">
-      </form>
+           <div class="col-sm-6">
+           
+        <h4 style="color: #00ff00"><b>ORDERS<b>&nbsp;COMFIRMED<b></h4>
+     
           </div>
         </div>
       </div>
@@ -55,16 +55,17 @@ $users = fetchAllUsers();
               </span>
             </th>
             <th>ID</th>
-            <th>FIRST NAME</th>
-            <th>LAST NAME</th>
-            <th>EMAIL</th>
-            <th>CITY</th>
-            <th>DATUM</th>
-            <th>ACTION</th>
+            <th>Full Name</th>
+            <th>Price</th>
+            <th>Street</th>
+            <th>Postal Code</th>
+            <th>City</th>
+            <th>Country</th>
+            
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($users as $key => $user) { ?>
+          <?php foreach ($orders as $key => $order) { ?>
           
           <tr>
             <td>
@@ -73,23 +74,24 @@ $users = fetchAllUsers();
                 <label for="checkbox1"></label>
               </span>
             </td>
-            <th><?=$user['id']?></th>
-            <th><?=htmlentities($user['first_name'])?></th>
-            <th><?=htmlentities($user['last_name'])?></th>
-            <th><?=htmlentities($user['email'])?></th>
-            <th><?=htmlentities($user['city'])?></th>
-            <th><?=htmlentities($user['create_at'])?></th>
+            <th><?=$order['id']?></th>
+            <th><?=htmlentities($order['billing_full_name'])?></th>
+            <th><?=htmlentities($order['total_price'])?> $</th>
+            <th><?=htmlentities($order['billing_street'])?></th>
+            <th><?=htmlentities($order['billing_city'])?></th>
+            <th><?=htmlentities($order['billing_postal_code'])?></th>
+            <th><?=htmlentities($order['billing_country'])?></th>
             <th>
 
                
               </form>
-              <form action="update members.php?" method="GET" >
-                <input type="hidden" name="id" value="<?=$user['id']?>">
-                <input type="submit" value="Updatera"class="btn btn-info">
+              <form action="order.php?" method="GET" >
+                <input type="hidden" name="id" value="<?=$order['id']?>">
+               
               </form>
               <form action="" method="POST">
-                <input type="hidden" name="id" value="<?=$user['id']?>">
-                 <input type="submit"name="delete" class="btn btn-danger"value="Delete"></a>				
+                <input type="hidden" name="id" value="<?=$order['id']?>">
+               				
               </form>
           
 
