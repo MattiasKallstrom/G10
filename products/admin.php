@@ -47,7 +47,7 @@ $stmt->bindParam(':img_url', $img_url);
 <div class="container">
 <div class="row justify-content-center mt-5">
 <table class="table table-striped table-hover">
-       <tr class="form-group-xl-12">
+       <tr class="thead-dark">
           <th >ID</th>
           <th>Title</th>
           <th class="col">Description</th>
@@ -64,13 +64,14 @@ $stmt->bindParam(':img_url', $img_url);
             <td ><?php echo htmlspecialchars($product['price']); ?></td>
             <td ><?php echo htmlspecialchars($product['img_url']); ?></td>
             <td>
-            <form action="update.php" <?php echo $product['id']?>method="GET" >
+            <form action="update.php?update= <?php echo $product['id']?>" method="GET" >
               <input type="hidden" name="id" value="<?=$product['id']?>">
                 <input type="submit" class="btn btn-info" value="Update">
               </form>
               <form action="admin.php?delete=<?php echo $product['id']?>" method="POST">
                 <input type="hidden" name="id" value="<?=$product['id']?>">
                  <input type="submit"name="delete" class=" btn btn-danger" value="Delete "></a>     
+        </form>
             </td>
           </tr>
         <?php endforeach; ?>

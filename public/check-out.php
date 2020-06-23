@@ -34,7 +34,7 @@ require_once("../layout/header-signed-in.php");
       <?php foreach ($_SESSION['cartItems'] as $cartId => $cartItem) {?>
       
       <tr>
-        <td><img src="../images/almond1.jpg" style="height: 4rem; width:6rem"  class="card-img-top align-self-center" alt="..." ></td>
+        <td><img src=<?=htmlentities($cartItem['img_url'])?> style="height: 4rem; width:6rem"  class="card-img-top align-self-center" alt="..." ></td>
         <td><p class="card-text"><?=htmlentities($cartItem['description'])?>  ...</p></td>
         <td>
           <form action="delete-cart-item.php" method="POST">

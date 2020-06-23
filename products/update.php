@@ -16,7 +16,7 @@ $img_url = '';
 if (isset($_POST['update'])) {
     $title       = trim($_POST['title']);
     $description = trim($_POST['description']);
-    $price   = (float)($_POST['price']);
+    $price   = trim($_POST['price']);
 
     $stmt = $dbconnect->prepare("UPDATE products SET title = :title, description = :description, price = :price WHERE id = :id");
       $stmt->bindParam(':title', $title);
