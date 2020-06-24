@@ -44,7 +44,7 @@
 				<a href="#">G-10.com</a>.
 			</p>
 		</div>
-		<div class="col-md-4 col-sm-6 col-xs-12">
+		<!-- <div class="col-md-4 col-sm-6 col-xs-12">
 			<ul class="social-icons">
 				<li>
 					<a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
@@ -60,6 +60,6 @@
 				</li>
 			</ul>
 		</div>
-	</div>
+	</div> -->
 </div>
 </footer>
