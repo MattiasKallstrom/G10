@@ -32,7 +32,7 @@ if (isset($_GET['item'])) {
 <div class="col mb-3 justify-content-center d-flex justify-content-center">
 <div class="product content-wrapper">
 <div class="card h-100">
-<img src="<?php echo $products['img_url']?>" class="card-img-top align-self-center" alt="...">
+<img src="../images/<?php echo $products['img_url']?>" class="card-img-top align-self-center" alt="...">
     <div>
         <h1 class="title"><?=$products['title']?></h1>
         <h2 class="description"><?=$products['description']?></h2>

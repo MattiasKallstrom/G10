@@ -1,51 +1,55 @@
 <?php
-require('../src/config.php');
+require('../../src/config.php');
 require(SRC_PATH . 'dbconnect.php');
 ?>
 
+
   <?php
-  if (isset($_POST['deleteBtn'])) {
+  
+  
+if (isset($_POST['delete'])) { 
+ // $result = deleteUser($_SESSION['id']);}
   try {
-  $query = "
-  DELETE FROM products
-  WHERE id = :id;
-  ";
-  $stmt = $dbconnect->prepare($query);
-  $stmt->bindParam(':id', $_POST['id']);
-  $stmt->execute();
+      $query = "
+          DELETE FROM orders
+          WHERE id = :id;
+      ";
+
+      $stmt = $dbconnect->prepare($query);
+      $stmt->bindValue(':id', $_POST['id']);
+      $stmt->execute();
   } catch (\PDOException $e) {
-  throw new \PDOException($e->getMessage(), (int) $e->getCode());
+      throw new \PDOException($e->getMessage(), (int) $e->getCode());
   }
-  }
-  // Fetch all users
-  try {
-  $query = "
-  SELECT * FROM products
-  ";
-  $stmt = $dbconnect->query($query);
- 
-  $products = $stmt->fetchAll();
-  } catch (\PDOException $e) {
-  throw new \PDOException($e->getMessage(), (int) $e->getCode());
-  }
+}
+
+
+
+$orders = fetchAllOrders();
+
+
 ?>
 <?php include ('include/navbar1.php')?>
-  <body>
-
-    <div class="container-fluid">
- 
-            
+   <body>
     <div class="table-wrapper">
       <div class="table-title">
         <div class="row">
-          <div class="col-sm-6">
-            <a class="navbar-brand" href="adminpanel.php" style="color: #ffffff;">TO &nbsp;ADMIN<b>&nbsp;PANEL</b></a>
+          <div class="col-sm-4">
+            <a class="navbar-brand" href="adminpanel.php" style="color: #ffffff">TO &nbsp;ADMIN<b>PANEL</b></a>
           </div>
-          <div class="col-sm-6">
-             <form action="create product.php" method="GET">
-        <input type="submit" value="create product"class="btn btn-success">
-      </form>
-         </div>
+           <div class="col-sm-4">
+           
+        <h4 style="color: #00ff00"><b>ORDERS<b>&nbsp;COMFIRMED<b></h4>
+     
+          </div>
+          <div class="col-sm-4">
+          <form class="navbar-form form-inline" style="margin-bottom: -3px">
+            <div class="input-group search-box">
+              <input type="text" id="search" class="form-control" placeholder="Search Name...">
+              <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+            </div>
+          </form>
+        </div>
         </div>
       </div>
       <div class="row">
@@ -59,15 +63,17 @@ require(SRC_PATH . 'dbconnect.php');
               </span>
             </th>
             <th>ID</th>
-            <th>Title</th>
-            <th>Description</th>
+            <th>Full Name</th>
             <th>Price</th>
-            <th>Datum</th>
-            <th>Action</th>
+            <th>Street</th>
+            <th>Postal Code</th>
+            <th>City</th>
+            <th>Country</th>
+            
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($products as $key => $product) { ?>
+          <?php foreach ($orders as $key => $order) { ?>
           
           <tr>
             <td>
@@ -76,26 +82,26 @@ require(SRC_PATH . 'dbconnect.php');
                 <label for="checkbox1"></label>
               </span>
             </td>
-            <th><?=$product['id']?></th>
-            <th><?=htmlentities($product['title'])?></th>
-            <th><?=htmlentities($product['description'])?></th>
-            <th><?=htmlentities($product['price'])?> $</th>
-            <th><?=htmlentities($product['create_at'])?></th>
+            <th><?=$order['id']?></th>
+            <th><?=htmlentities($order['billing_full_name'])?></th>
+            <th><?=htmlentities($order['total_price'])?> $</th>
+            <th><?=htmlentities($order['billing_street'])?></th>
+            <th><?=htmlentities($order['billing_city'])?></th>
+            <th><?=htmlentities($order['billing_postal_code'])?></th>
+            <th><?=htmlentities($order['billing_country'])?></th>
             <th>
 
                
               </form>
-              <form action="update product.php?" method="GET" >
-                <input type="hidden" name="id" value="<?=$product['id']?>">
-                <input type="submit" value="Updatera "class="btn btn-info">
+              <form action="order.php?" method="GET" >
+                <input type="hidden" name="id" value="<?=$order['id']?>">
+               
               </form>
               <form action="" method="POST">
-                <input type="hidden" name="id" value="<?=$product['id']?>">
-                 <input type="submit"name="deleteBtn" class=" btn btn-danger"value="Delete"></a>       
+                <input type="hidden" name="id" value="<?=$order['id']?>">
+               				
               </form>
           
-      
-
 
             </th>
           </tr>
@@ -120,7 +126,4 @@ require(SRC_PATH . 'dbconnect.php');
             </div>
   </div>
   </div>
-</div>
-</body>
-</html>
 

@@ -1,6 +1,6 @@
 <?php
  
-require('../src/config.php');
+require('../../src/config.php');
 require(SRC_PATH . 'dbconnect.php');
 $first_name ='';
 $last_name ='';

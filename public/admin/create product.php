@@ -1,6 +1,6 @@
 <?php
 
-require('../src/config.php');
+require('../../src/config.php');
 require(SRC_PATH . 'dbconnect.php'); 
 $title       ='';
 $description ='';
@@ -11,17 +11,18 @@ if (isset($_POST['register'])) {
 $title       = trim($_POST['title']);
 $description = trim($_POST['description']);
 $price   = (float)($_POST['price']);
-
+$img_url = trim($_POST['img_url']);
 {
 try {
 $query = "
-INSERT INTO products (title, description, price)
-VALUES (:title, :description, :price);
+INSERT INTO products (title, description, price, img_url)
+VALUES (:title, :description, :price, :img_url);
 ";
 $stmt = $dbconnect->prepare($query);
 $stmt->bindParam(':title', $title);
 $stmt->bindParam(':description', $description);
 $stmt->bindParam(':price', $price);
+$stmt->bindParam(':img_url', $img_url);
 $result = $stmt->execute(); // returns true/false
 } catch(\PDOException $e) {
 throw new \PDOException($e->getMessage(), (int) $e->getCode());
@@ -55,7 +56,11 @@ $msg = '<div class="error_msg">"Invalid Product Title  Or Price, Try Again"!</di
 						<div class="form-group">
 							<input type="price" class="form-control" name="price" placeholder="price" >
 						</div>
+						<br>
 						<div class="form-group">
+							  <input type="file" name="img_url" class="form-control-file" id="fileToUpload">
+							  <br>
+							  
 							<button type="submit" class="btn btn-success" name="register" value="Skapa">Create</button>
 						</div>
 					</div>

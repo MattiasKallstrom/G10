@@ -2,10 +2,10 @@
 require('../src/config.php');
 require('../src/dbconnect.php');
 
-if (empty($_SESSION['cartItems'])) {
- header('location: index.php');
- exit;
-}
+// if (empty($_SESSION['cartItems'])) {
+//  header('location: index.php');
+//  exit;
+// }
 $pageTitle = 'Check Out';
 $error = '';
 
@@ -34,7 +34,7 @@ require_once("../layout/header-signed-in.php");
       <?php foreach ($_SESSION['cartItems'] as $cartId => $cartItem) {?>
       
       <tr>
-        <td><img src=<?=htmlentities($cartItem['img_url'])?> style="height: 4rem; width:6rem"  class="card-img-top align-self-center" alt="..." ></td>
+        <td><img src="../images/<?= $cartItem['img_url'] ?>"style="height: 4rem; width:6rem"  class="card-img-top align-self-center" alt="..." ></td>
         <td><p class="card-text"><?=htmlentities($cartItem['description'])?>  ...</p></td>
         <td>
           <form action="delete-cart-item.php" method="POST">
@@ -76,48 +76,48 @@ require_once("../layout/header-signed-in.php");
   <input type="hidden" name="totalPrice" value="<?= $cartTotalSum ?>">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">First Name</label>
-      <input type="text" class="form-control" name="firstName" id="inputEmail4" placeholder="First Name">
+      <label for="inputEmail4">Förnamn</label>
+      <input type="text" class="form-control" name="firstName" id="inputEmail4" placeholder="Förnamn">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Last Name</label>
-      <input type="text" class="form-control" name="lastName" id="inputPassword4" placeholder="Last Name">
+      <label for="inputPassword4">Efternamn</label>
+      <input type="text" class="form-control" name="lastName" id="inputPassword4" placeholder="Efternamn">
     </div>
   </div>
    <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" name="email" id="inputEmail4" placeholder="Email">
+      <label for="inputEmail4">E-post</label>
+      <input type="email" class="form-control" name="email" id="inputEmail4" placeholder="E-post">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">password</label>
-      <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="password">
+      <label for="inputPassword4">Lösenord</label>
+      <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="Lösenord">
     </div>
   </div>
   <div class="form-row">
   <div class="form-group col-md-6">
-    <label for="inputAddress">Address</label>
+    <label for="inputAddress">Adress</label>
     <input type="text" class="form-control" name="street" id="inputAddress" placeholder="Katarinagatan 121">
   </div>
 <div class="form-group col-md-6">
-      <label for="inputZip">Phone Number</label>
+      <label for="inputZip">Telephone</label>
       <input type="text" name="phone" class="form-control" id="inputZip" value="070-000-00-00"> 
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputCity">City</label>
+      <label for="inputCity">Stad</label>
       <input type="text" name="city" class="form-control" id="inputCity">
     </div>
     <div class="form-group col-md-4">
-      <label for="inputState">Country</label>
+      <label for="inputState">Land</label>
       <select id="inputState" name="country" class="form-control">
         <option value="SE">Sverige</option>
       </select>
     </div>
     <div class="form-group col-md-2">
-      <label for="inputZip">postalCode</label>
+      <label for="inputZip">Postnummer</label>
       <input type="text" name="postalCode" class="form-control" id="inputZip">
     </div>
   </div>

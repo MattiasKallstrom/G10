@@ -40,7 +40,7 @@ foreach ($_SESSION['cartItems'] as $cartId => $cartItem) {
 							
 							<div class="row cart-detail">
 								<div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
-									<img src= <?=htmlentities($cartItem['img_url'])?> alt="">
+									<img src="../images/<?= $cartItem['img_url'] ?>" alt="">
 								</div>
 								<div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
 									<p><?= $cartItem['title'] ?></p>

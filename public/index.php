@@ -46,7 +46,7 @@ try {
 	
 		<?php foreach ($products as $product) { ?>
 	<div class="card h-100">
-		<img src="<?=htmlentities($product['img_url'])?>" class="card-img-top align-self-center" alt="...">
+		<img src="../images/<?=htmlentities($product['img_url'])?>" class="card-img-top align-self-center" alt="...">
 		
 
 		<div class="card-body">

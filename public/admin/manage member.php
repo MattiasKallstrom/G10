@@ -1,5 +1,5 @@
 <?php
-require('../src/config.php');
+require('../../src/config.php');
 require(SRC_PATH . 'dbconnect.php');
 ?>
 

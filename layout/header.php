@@ -25,7 +25,7 @@
 							<a class="nav-link" href="#">About</a>
 						</li>
 						<li class="nav-item">
-						    <a class="nav-link" href="../products/admin.php">Admin</a>
+						    <a class="nav-link" href="../products/admin.php">Product</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -33,10 +33,10 @@
 								More
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#">A1</a>
-								<a class="dropdown-item" href="#">B1</a>
+								<a class="dropdown-item" href="../public/admin/adminpanel.php">Adminpanel</a>
+								<a class="dropdown-item" href="#">Setting</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">C1</a>
+								<a class="dropdown-item" href="#">Profile</a>
 							</div>
 
 						</li>

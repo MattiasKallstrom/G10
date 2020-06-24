@@ -1,6 +1,6 @@
 <?php
  
-require('../src/config.php');
+require('../../src/config.php');
 require(SRC_PATH . 'dbconnect.php');
 require_once('include/header-admin.php');
 
@@ -95,7 +95,7 @@ require_once('include/header-admin.php');
 		</div>
 		<div class="col-sm-6 col-md-6 col-lg-3 mt-3 text-white">
 			<div class="card">
-				<div class="content"  style="background-color:#50BBC7 ">
+				<div class="content"  style="background-color:#273A5E">
 					<div class="row">
 						<div class="col-sm-4">
 							<div class="icon-big text-center">
@@ -124,7 +124,7 @@ require_once('include/header-admin.php');
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="panel panel-default text-white">
-					<div class="panel-heading"style="margin-bottom: 20px; margin-top:50px"> <i class="fa fa-users"style="color:#0CF000"></i> <h6>LATEST REGISTERD USERS</h6></div>
+					<div class="panel-heading"style="margin-bottom: 10px; margin-top:20px"> <i class="fa fa-users"style="color:#0CF000"></i> <h6>LATEST REGISTERD USERS</h6></div>
 					<?php
 					if (isset($_POST['activate']))  { 
   $result= activateUser($_SESSION['id']);
@@ -135,25 +135,30 @@ $users = fetchAllUsersByOrder();
 					?>
 					<div class="panel-body" style="border-radius: 20px">
 						<?php foreach ($users as $key => $user) { ?>
-						<div class="card" style="background-color:#50BBC7 ;border-radius: 0px" >
-							<ul class=" list-group-flush" style="list-style-type: none">
-								<li class="group-item"style="color:#FFFFFF">
-									
-									<?=$user['id']?>&emsp;&ensp;
-									<?=htmlentities($user['first_name'])?> &emsp;&ensp;
-									<?=htmlentities($user['last_name'])?> &emsp;&ensp;
-								<?=htmlentities($user['create_at'])?></li>
+						<table class="table table-striped table-hover" style="background-color:#50BBC7 " >
+							 <tbody>
+                    <tr style="color:#FFFFFF">
+								  <td>	<?=$user['id']?></td>
+									  <td><?=htmlentities($user['first_name'])?> </td>
+									  <td><?=htmlentities($user['last_name'])?></td>
+								  <td><?=htmlentities($user['create_at'])?></td>
+								<td><a href="manage member.php" class="view" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
 							
-								
-							</ul>
-						</div>
+                </tbody>
+            </table>
+					
 						
-					<?php } ?></div>
-				</div>
+					<?php } ?>
+				</tr>
+			</div>
+
+</tbody>
+</table>
+</div>
 			</div>
 			<div class="col-sm-6">
 				<div class="panel panel-default text-white">
-					<div class="panel-heading"style="margin-bottom: 20px ;margin-top:50px"  > <i class="fa fa-tag"style="color:#0CF000"></i> <h6>LATEST PRODUCTS ADDED</h6></div>
+					<div class="panel-heading"style="margin-bottom: 10px ;margin-top:20px"  > <i class="fa fa-tag"style="color:#0CF000"></i> <h6>LATEST PRODUCTS ADDED</h6></div>
 					<?php
 					if (isset($_POST['activate']))  { 
   $result= activateProduct($_SESSION['id']);
@@ -163,47 +168,59 @@ $products = fetchAllProductsByOrder();
 					<div class="panel-body"style="border-radius: 20px">
 						<?php foreach ($products as $key => $product) { ?>
 						
-						<div class="card" style="background-color:#50BBC7 ;border-radius: 0px" >
-							<ul class="group-flush" style="list-style-type: none">
-								<li class="group-item"style="color:#FFFFFF">
-									<?=$product['id']?>&emsp;
-									<?=htmlentities($product['title'])?> &emsp;&ensp;
-									<?=htmlentities($product['price'])?> $&emsp;&ensp;
-								<?=htmlentities($product['create_at'])?></li>
-								
-							</ul>
-						</div>
+						<table class="table table-striped table-hover" style="background-color:#50BBC7 " >
+							 <tbody>
+                    <tr style="color:#FFFFFF">
+								  <td>	<?=$product['id']?></td>
+									  <td><?=htmlentities($product['title'])?> </td>
+									  <td><?=htmlentities($product['price'])?> $</td>
+								  <td><?=htmlentities($product['create_at'])?></td>
+								<td><a href="manage product.php" class="view" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
+							
+                </tbody>
+            </table>
+					
 						
-					<?php } ?></div>
-				</div>
+					<?php } ?>
+				</tr>
 			</div>
-			<div class="col-sm-12 "style="text-align:center">
+</tbody>
+</table>
+</div>
+</div>
+			<div class="col-sm-10 "style="text-align:center;margin-left:80px; margin-right:50px;" >
 				<div class="panel panel-default text-white">
-					<div class="panel-heading"style="margin-bottom: 20px ;margin-top:50px"  > <i class="fa fa-money"style="font-size:38px;color:#0CF000"></i><br></h6>LATEST ORDER CONFIRMED</h6></div>
+					<div class="panel-heading"style="margin-bottom: 10px ;margin-top:30px"  > <i class="fa fa-money"style="font-size:38px;color:#0CF000"></i><br></h6>LATEST ORDER CONFIRMED</h6></div>
 					<?php
 					if (isset($_POST['activate']))  { 
   $result= activateOrder($_SESSION['id']);
 }
 $orders = fetchAllOrdersByOrder();
 					?>
-					<div class="panel-body" style="border-radius: 20px">
+					<div class="panel-body" style="border-radius:20px">
 						<?php foreach ($orders as $key => $order) { ?>
 						
-						<div class="card" style="background-color:#50BBC7 ;border-radius: 0px" >
-							<ol class="c"style= "list-style-type: upper-roman">
-								<li class="group-item"style="color:#FFFFFF">
-			<?=htmlentities($order['billing_full_name'])?>&emsp;&emsp;&emsp;
-            <?=htmlentities($order['total_price'])?>$&emsp;&emsp;&emsp;
-            <?=htmlentities($order['billing_street'])?>&emsp;&emsp;&emsp;
-            <?=htmlentities($order['billing_city'])?>&emsp;&emsp;&emsp;
-            <?=htmlentities($order['billing_postal_code'])?>&emsp;&emsp;&emsp;
-            <?=htmlentities($order['billing_country'])?>&emsp;&emsp;&emsp;
-								
-							</ol>
-						</div>
+						<table class="table table-striped table-hover" style="background-color:#50BBC7 " >
+				
+				  
+                <tbody>
+                    <tr style="color:#FFFFFF">
+                       
+                        <td><?=$order['id']?></td>
+						<td><?=htmlentities($order['billing_full_name'])?></td>
+                        <td><?=htmlentities($order['total_price'])?>$</td>                        
+						<td><?=htmlentities($order['billing_street'])?></td>
+						<td><?=htmlentities($order['billing_city'])?></td>
+						<td> <?=htmlentities($order['billing_postal_code'])?></td>
+						<td><?=htmlentities($order['billing_country'])?></td>
+						<td><a href="#" class="view" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
+                    </tr>
+					
+                </tbody>
+            </table>
 						
-					<?php } ?></div>
-				</div>
+					<?php } ?>
+				
 			</div>
 		</div>
 		
