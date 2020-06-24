@@ -10,7 +10,7 @@ if (isset($_POST['deletePostBtn'])) {
 $result= deleteUser($_SESSION['id']);   
 if ($result) {
   session_destroy();
-  redirectLocation('../public/sign-in.php');
+  redirectLocation('sign-in.php');
 }
 
 }
@@ -39,25 +39,25 @@ if (isset($_POST['updateUser'])) {
                 
 
   if (empty($first_name)) {
-     $error .= "<li>First Name is requierd!</li>";
+     $error .= "<li>- First Name is requierd!</li>";
   }if (empty($last_name)) {
-     $error .= "<li>Last Name is requierd!</li>";
+     $error .= "<li>- Last Name is requierd!</li>";
    }    
    if (empty($email)) {
-     $error .= "<li>Email is requierd!</li>";
+     $error .= "<li>- Email is requierd!</li>";
   }if (empty($phone)) {
-     $error .= "<li>Phone is requierd!</li>";
+     $error .= "<li>- Phone is requierd!</li>";
   }if (empty($street)) {
-     $error .= "<li>Street is requierd!</li>";
+     $error .= "<li>- Street is requierd!</li>";
   }
   if (empty($postal_code)) {
-     $error .= "<li>Postal Code is requierd!</li>";
+     $error .= "<li>- Postal Code is requierd!</li>";
   }if (empty($city)) {
-     $error .= "<li>City is requierd!</li>";
+     $error .= "<li>- City is requierd!</li>";
   }if (empty($country)) {
-     $error .= "<li>Country is requierd!</li>";
+     $error .= "<li>- Country is requierd!</li>";
   }if ($error) {
-            $error = "<ul class='error'>{$error}</ul>";
+            $error = "<ul class='error alert alert-danger list-inline mx-auto  col-md-8'>{$error}</ul>";
 }if (empty($error)) {
   $userData = [
                 'first_name' => $first_name,
@@ -98,16 +98,6 @@ if (isset($_POST['updateUser'])) {
 
 
 
-
-
-
-
-
-
-
-
-
-
 <?php require_once("../layout/header-dashboard.php"); ?>
 <div class="container col-xl-12">
 <div class="form-row justify-content-center">
@@ -117,10 +107,13 @@ if (isset($_POST['updateUser'])) {
   </div>
 </div>
 <form action="#" method="POST" >
-	<?php echo $error;?>
-	<?php echo $message;?>
 
   <div class="form-row justify-content-center">
+  <?php echo $error;?>
+  <?php echo $message;?>
+</div>
+  <div class="form-row justify-content-center">
+
     <div class="form-group col-xl-4">
       <label for="inputEmail4">First Name</label>
       <input type="text" name="first_name" class="form-control" id="inputEmail4" 
@@ -160,7 +153,7 @@ if (isset($_POST['updateUser'])) {
     </div>
   </div>
 
-	
+  
   <div class="form-row justify-content-center">
     <div class="form-group col-xl-4">
       <label for="inputCity">Street</label>
@@ -176,7 +169,7 @@ if (isset($_POST['updateUser'])) {
   </div>
  <div class="form-row justify-content-center">
     <div class="form-group col-xl-8">
-    	<input type="submit" name="updateUser" class=" btn btn-primary" value="Update">
+      <input type="submit" name="updateUser" class=" btn btn-primary" value="Update">
   <input type="submit" name="deletePostBtn" class=" btn btn-primary float-right delete" value="Delete">
   
 </div>
@@ -185,5 +178,3 @@ if (isset($_POST['updateUser'])) {
 </div>
 </form>
 </div>
-
-<?php require_once('../layout/footer.php') ?>
