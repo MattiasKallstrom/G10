@@ -3,10 +3,10 @@ require('../src/config.php');
 require('../src/dbconnect.php');
 $pageTitle = 'Check Out';
 
-// if (empty($_SESSION['cartItems'])) {
-//  header('location: index.php');
-//  exit;
-// }
+if (empty($_SESSION['cartItems'])) {
+ header('location: index.php');
+ exit;
+}
 unset ($_SESSION['cartItems']);
 if(!isset($_SESSION['user'])){
 require_once("../layout/header.php");
