@@ -36,7 +36,8 @@ if (isset($_POST['updateUser'])) {
   $postal_code = trim($_POST['postal_code']);
   $city = trim($_POST['city']);
   $country = trim($_POST['country']);
-                
+  $password = trim($_POST['password']);
+  $confPassword = trim($_POST['confPassword']);
 
   if (empty($first_name)) {
      $error .= "<li>- First Name is requierd!</li>";
@@ -56,13 +57,26 @@ if (isset($_POST['updateUser'])) {
      $error .= "<li>- City is requierd!</li>";
   }if (empty($country)) {
      $error .= "<li>- Country is requierd!</li>";
-  }if ($error) {
+  }if (empty($password)) {
+    $error .= "<li>Password is requierd!</li>";
+    if (empty($confPassword)) {
+    $error .= "<li>Confirm Password is requierd!</li>";
+    }
+    }
+    if (!empty($password) && strlen($password) < 6) {
+    $error .= "<li>Password can't be less than six charactares!</li>";
+    }
+    if ($password !== $confPassword) {
+    $error .= "<li>Password doesn't match!</li>";
+
+    }if ($error) {
             $error = "<ul class='error alert alert-danger list-inline mx-auto  col-md-8'>{$error}</ul>";
 }if (empty($error)) {
   $userData = [
                 'first_name' => $first_name,
                 'last_name' => $last_name,
                 'email'    => $email,
+                'password'    => $password,
                 'phone' => $phone,
                 'street' => $street,
                 'postal_code'    => $postal_code,
@@ -131,6 +145,7 @@ if (isset($_POST['updateUser'])) {
     <input type="text" name="email" class="form-control" id="inputAddress" placeholder="example@domain.com" 
     value="<?=htmlentities($user['email'])?>">
   </div>
+  
   <div class="form-group col-xl-4">
     <label for="inputAddress2">Phone</label>
     <input type="tel" name="phone" class="form-control" id="inputAddress2" placeholder="0700-00-00-00" 
@@ -138,7 +153,16 @@ if (isset($_POST['updateUser'])) {
   </div>
 </div>
 
-
+ <div class="form-row justify-content-center">
+<div class="form-group col-md-4">
+      <label for="inputEmail4">Password</label>
+      <input type="password" name="password" class="form-control"  >
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputPassword4">Confirm Password</label>
+      <input type="password" name="confPassword" class="form-control">
+    </div>
+  </div>
 
 <div class="form-row justify-content-center">
 <div class="form-group col-xl-4">
