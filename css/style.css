@@ -121,6 +121,11 @@ background-color: #008000 ;
 transition: 0.7s;
 }*/
 .card-img-top {
+height: 80px;
+width: 80PX;
+
+}
+.card.h-100 .card-img-top {
 height: 200px;
 width: 200PX;
 
