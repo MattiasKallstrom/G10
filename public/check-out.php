@@ -2,10 +2,10 @@
 require('../src/config.php');
 require('../src/dbconnect.php');
 
-// if (empty($_SESSION['cartItems'])) {
-//  header('location: index.php');
-//  exit;
-// }
+if (empty($_SESSION['cartItems'])) {
+ header('location: index.php');
+ exit;
+}
 $pageTitle = 'Check Out';
 $error = '';
 
