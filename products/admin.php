@@ -94,7 +94,7 @@ $stmt->bindParam(':img_url', $img_url);
                 <label for="content">Description</label>
                 <br>
                 <textarea type="text" name="description" class="form-control" 
-                value="<?php echo $description; ?>" rows="5" cols="40" placeholder="Content"></textarea>
+                value="<?php echo $description; ?>" rows="5" cols="40" placeholder="Description"></textarea>
                 <br>
                 
                 <label for="author">Price</label>

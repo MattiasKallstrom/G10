@@ -52,8 +52,8 @@ try {
 		<div class="card-body">
 		
 		<h3 class="card-title"><?=htmlentities($product['title'])?></h3>
-					<p class="card-text"><?=htmlentities(substr($product['description'], 0,100))?>  ...</p>
-			<p class="price"><?=htmlentities($product['price'])?> $</p>
+					<p class="card-text"><?=htmlentities(substr($product['description'], 0,100))?></p>
+			<p class="price">$<?=htmlentities($product['price'])?> </p>
 			<form action="add-cart-item.php" method="POST">
 			<input type="hidden" name="productId" value="<?= $product['id'] ?>">
 	
