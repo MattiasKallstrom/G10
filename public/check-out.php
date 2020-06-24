@@ -76,48 +76,48 @@ require_once("../layout/header-signed-in.php");
   <input type="hidden" name="totalPrice" value="<?= $cartTotalSum ?>">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Förnamn</label>
-      <input type="text" class="form-control" name="firstName" id="inputEmail4" placeholder="Förnamn">
+      <label for="inputEmail4">First Name</label>
+      <input type="text" class="form-control" name="firstName" id="inputEmail4" placeholder="First Name">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Efternamn</label>
-      <input type="text" class="form-control" name="lastName" id="inputPassword4" placeholder="Efternamn">
+      <label for="inputPassword4">Last Name</label>
+      <input type="text" class="form-control" name="lastName" id="inputPassword4" placeholder="Last Name">
     </div>
   </div>
    <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">E-post</label>
-      <input type="email" class="form-control" name="email" id="inputEmail4" placeholder="E-post">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" name="email" id="inputEmail4" placeholder="Email">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Lösenord</label>
-      <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="Lösenord">
+      <label for="inputPassword4">password</label>
+      <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="password">
     </div>
   </div>
   <div class="form-row">
   <div class="form-group col-md-6">
-    <label for="inputAddress">Adress</label>
+    <label for="inputAddress">Address</label>
     <input type="text" class="form-control" name="street" id="inputAddress" placeholder="Katarinagatan 121">
   </div>
 <div class="form-group col-md-6">
-      <label for="inputZip">Telephone</label>
+      <label for="inputZip">Phone Number</label>
       <input type="text" name="phone" class="form-control" id="inputZip" value="070-000-00-00"> 
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputCity">Stad</label>
+      <label for="inputCity">City</label>
       <input type="text" name="city" class="form-control" id="inputCity">
     </div>
     <div class="form-group col-md-4">
-      <label for="inputState">Land</label>
+      <label for="inputState">Country</label>
       <select id="inputState" name="country" class="form-control">
         <option value="SE">Sverige</option>
       </select>
     </div>
     <div class="form-group col-md-2">
-      <label for="inputZip">Postnummer</label>
+      <label for="inputZip">postalCode</label>
       <input type="text" name="postalCode" class="form-control" id="inputZip">
     </div>
   </div>
