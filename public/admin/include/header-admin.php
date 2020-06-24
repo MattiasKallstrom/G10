@@ -44,11 +44,11 @@
 					</form>
 					<ul class="nav navbar-nav ml-auto active" >
 						<li class="nav-item dropdown">
-							<a data-toggle="dropdown" class="nav-link  text-white dropdown-toggle" href="#"> Wellcome  </a>
+							<a data-toggle="dropdown" class="nav-link  text-white dropdown-toggle" href="#"> Wellcome Med </a>
 							<ul class="dropdown-menu"style = "margin-left:-42px;border-box:none">
 								<li><a href="manage member.php" class="dropdown-item text-info"style = "margin-left:10px">PROFILE</a></li>
 								<li><a href="manage product.php" class="dropdown-item text-info"style = "margin-left:10px">PRODUCT</a></li>
-								<li><a href="sign-out.php" class="dropdown-item text-info" style = "margin-left:10px">LOGOUT</a></li>
+								<li><a href="../sign-out.php" class="dropdown-item text-info" style = "margin-left:10px">LOGOUT</a></li>
 							</ul>
 						</li>
 					</ul>

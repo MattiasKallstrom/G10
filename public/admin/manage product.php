@@ -17,7 +17,6 @@ require(SRC_PATH . 'dbconnect.php');
   throw new \PDOException($e->getMessage(), (int) $e->getCode());
   }
   }
-  // Fetch all users
   try {
   $query = "
   SELECT * FROM products

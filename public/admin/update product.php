@@ -5,13 +5,14 @@ require(SRC_PATH . 'dbconnect.php');
 $title  = '';
 $description    = '';
 $price      = '';
+$img_url ='';
 $error     = '';
 $msg       = '';
 if (isset($_POST['register'])) {
 $title       = trim($_POST['title']);
 $description = trim($_POST['description']);
 $price   = (float)($_POST['price']);
-
+$img_url = trim($_POST['img_url']);
 if (empty($title)) {
 $error .= "<li>title is required</li>";
 }
@@ -33,13 +34,14 @@ if (empty($error)) {
 try {
 $query = "
 UPDATE products
-SET title = :title, description = :description, price = :price
+SET title = :title, description = :description, price = :price, img_url = :img_url
 WHERE id = :id
 ";
 $stmt = $dbconnect->prepare($query);
 $stmt->bindParam(':title', $title);
 $stmt->bindParam(':description', $description);
 $stmt->bindParam(':price', $price);
+$stmt->bindParam(':img_url', $img_url);
 $stmt->bindParam(':id', $_GET['id']);
 $result = $stmt->execute(); // returns true/false
 } catch(\PDOException $e) {
@@ -53,7 +55,7 @@ $msg = '<div class="error_msg">Uppdateringen av produkt misslyckades. Var snäll
 }
 }
 }
-// Fetch user by id
+
 try {
 $query = "
 SELECT * FROM products
@@ -94,6 +96,8 @@ throw new \PDOException($e->getMessage(), (int) $e->getCode());
                 
                 
                 <div class="form-group">
+                	 <input type="file" name="img_url" class="form-control-file" id="fileToUpload">
+							  <br>
                     <button type="submit" class="btn btn-info " name="register" value="update">UPDATE</button>
                 </div>
             </div>

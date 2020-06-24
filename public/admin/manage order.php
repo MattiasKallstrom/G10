@@ -8,7 +8,6 @@ require(SRC_PATH . 'dbconnect.php');
   
   
 if (isset($_POST['delete'])) { 
- // $result = deleteUser($_SESSION['id']);}
   try {
       $query = "
           DELETE FROM orders
