@@ -27,13 +27,16 @@
 						<li class="nav-item">
 						    <a class="nav-link" href="../products/admin.php">Product</a>
 						</li>
+						<li class="nav-item">
+						    <a class="nav-link" href="../public/admin/adminpanel.php">Adminpanel</a>
+						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								More
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="../public/admin/adminpanel.php">Adminpanel</a>
+								<a class="dropdown-item" href="#">FAQ</a>
 								<a class="dropdown-item" href="#">Setting</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#">Profile</a>
