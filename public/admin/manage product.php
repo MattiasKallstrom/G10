@@ -79,7 +79,7 @@ require(SRC_PATH . 'dbconnect.php');
             <th><?=htmlentities($product['title'])?></th>
             <th><?=htmlentities($product['description'])?></th>
             <th><?=htmlentities($product['price'])?> $</th>
-            <th><?=htmlentities($product['create_at'])?></th>
+            <th><?=htmlentities($product['created_at'])?></th>
             
             <th>
 

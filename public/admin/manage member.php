@@ -78,7 +78,7 @@ $users = fetchAllUsers();
             <th><?=htmlentities($user['last_name'])?></th>
             <th><?=htmlentities($user['email'])?></th>
             <th><?=htmlentities($user['city'])?></th>
-            <th><?=htmlentities($user['create_at'])?></th>
+            <th><?=htmlentities($user['created_at'])?></th>
             <th>
 
                

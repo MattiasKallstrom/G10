@@ -141,7 +141,7 @@ $users = fetchAllUsersByOrder();
 								  <td>	<?=$user['id']?></td>
 									  <td><?=htmlentities($user['first_name'])?> </td>
 									  <td><?=htmlentities($user['last_name'])?></td>
-								  <td><?=htmlentities($user['create_at'])?></td>
+								  <td><?=htmlentities($user['created_at'])?></td>
 								<td><a href="manage member.php" class="view" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
 							
                 </tbody>
@@ -174,7 +174,7 @@ $products = fetchAllProductsByOrder();
 								  <td>	<?=$product['id']?></td>
 									  <td><?=htmlentities($product['title'])?> </td>
 									  <td><?=htmlentities($product['price'])?> $</td>
-								  <td><?=htmlentities($product['create_at'])?></td>
+								  <td><?=htmlentities($product['created_at'])?></td>
 								<td><a href="manage product.php" class="view" title="View Details"><i class="material-icons">&#xE5C8;</i></a></td>
 							
                 </tbody>
