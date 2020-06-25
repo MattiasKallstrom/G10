@@ -7,6 +7,7 @@ require('create.php');
 
 //require('upload.php');
 error_reporting(-1);
+$pageTitle = 'Admin';
 
 
 if(!isset($_SESSION['user'])){

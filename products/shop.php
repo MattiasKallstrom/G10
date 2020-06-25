@@ -3,6 +3,7 @@ require('../src/config.php');
 require('../src/dbconnect.php');
 
 error_reporting(-1);
+$pageTitle = 'Shop';
 
 
 if(!isset($_SESSION['user'])){

@@ -1,6 +1,6 @@
 <?php 
 require('../src/dbconnect.php');
-
+$pageTitle = 'Update product';
 
 if(!isset($_SESSION['user'])){
     require_once("../layout/header.php");
