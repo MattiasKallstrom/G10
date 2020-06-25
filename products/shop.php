@@ -26,19 +26,19 @@ if (isset($_GET['item'])) {
 }
 
 ?>
-
 <body class="shop-page">
+<div class="container col-xl-12">
 <div class="card-deck">
 <div class="col mb-3 justify-content-center d-flex justify-content-center">
-<div class="product content-wrapper">
-<div class="card h-100">
-<img src="../images/<?php echo $products['img_url']?>" class="card-img-top align-self-center" alt="...">
-    <div>
-        <h1 class="title"><?=$products['title']?></h1>
-        <h2 class="description"><?=$products['description']?></h2>
-        <span class="price">
-            &dollar;<?=$products['price']?>
-        </span>
+
+   
+   <div class="product content-wrapper">
+    <div class="card h-100">
+       <img src=<?php echo $products['img_url']?> class="card-img-top align-self-center" alt="...">
+    <div class="card-body">
+    <h3 class="card-title"><?=htmlentities($products['title'])?></h3>
+    <p class="card-text"><?=htmlentities(substr($products['description'], 0,100))?></p>
+    <p class="price">$<?=htmlentities($products['price'])?> </p>
         <form action="../public/add-cart-item.php" method="POST">
 			<input type="hidden" name="productId" value="<?= $products['id'] ?>">
 			<input type="number" name="quantity" value="1" min="0">
